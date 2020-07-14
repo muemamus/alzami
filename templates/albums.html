@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Album Manager</title>
+</head>
+<body>
+    {% for album in albums %}
+            {{album.album_name}}
+            {{album.band_name}}
+            {{album.type_of_band}}
+            {{album.year_of_release}}
+            {{album.number_of_songs}}
+            {{album.image_link}}
+    {% endfor %}
+</body>
+</html>
