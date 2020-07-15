@@ -1,0 +1,27 @@
+    {% extends 'base.html' %}
+    {% block content %}
+    <ul class="collapsible" data-collapsible="accordion">
+        {% for contact in contacts %}
+        <li>
+            <div class="collapsible-header">
+
+                <div class=" task_header col s9">
+                    <i class="material-icons">expand_more</i><strong>{{contact.phonenumber}}</strong> 
+                </div>
+            </div>
+            <div class="collapsible-body">
+                <p>Firstname : {{contact.firstname}}</p>
+                <p>Lastname  : {{contact.lastname}}</p>
+                <p> Email     : {{contact.email}}</p>
+                <p> Date Created     : {{contact.date_created}}</p>
+                   
+                   
+                   
+                   
+
+                
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endblock %}

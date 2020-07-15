@@ -5,15 +5,15 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId 
 
 app = Flask(__name__)
-app.config["MONGO_DBNAME"] = 'album_manager'
+app.config["MONGO_DBNAME"] = 'contact_manager'
 app.config["MONGO_URI"] = os.getenv('MONGO_URI')
 
 mongo = PyMongo(app)
 
 @app.route('/')
-@app.route('/get_albums')
+@app.route('/get_contacts')
 def hello():
-    return render_template("albums.html", albums=mongo.db.albums.find())
+    return render_template("contacts.html", contacts=mongo.db.contacts.find())
 
 
 if __name__ == '__main__':
