@@ -4,10 +4,15 @@
         {% for contact in contacts %}
         <li>
             <div class="collapsible-header">
-
-                <div class=" task_header col s9">
+                
+                <div class="task_header col s9">
                     <i class="material-icons">expand_more</i><strong>{{contact.phonenumber}}</strong> 
                 </div>
+                 <div class="col s3">
+                    <a class="waves-effect waves-light btn btn_small red">Update</a>
+                    <a class="waves-effect waves-light btn btn_small blue">Delete</a>
+                </div>
+                
             </div>
             <div class="collapsible-body">
                 <p>Firstname : {{contact.firstname}}</p>
