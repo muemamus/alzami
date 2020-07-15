@@ -12,26 +12,26 @@ mongo = PyMongo(app)
 
 @app.route('/')
 @app.route('/get_contacts')
-def hello():
+def get_contacts():
     return render_template("contacts.html", contacts=mongo.db.contacts.find())
 
 @app.route('/add_contact')
-def add_task():
+def add_contact():
     return render_template('addcontact.html')
 
-@app.route('/add_contact', methods=['POST'])
+@app.route('/add_contact',methods=['POST'])
 def insert_contact():
     contacts = mongo.db.contacts
     contacts.insert_one(request.form.to_dict())
     return redirect(url_for('get_contacts'))
 
 @app.route('/edit_contact/<contact_id>')
-def edit_task(task_id):
+def edit_contact(contact_id):
     contact_toedit =  mongo.db.contacts.find_one({"_id": ObjectId(contact_id)})
     return render_template('editcontact.html', contact=contact_toedit)
 
 @app.route('/update_contact/<contact_id>',methods=['POST'])
-def update_task(contact_id):
+def update_contact(contact_id):
     contacts = mongo.db.contacts
     contacts.update( {'_id': ObjectId(contact_id)},
     {
@@ -41,6 +41,11 @@ def update_task(contact_id):
         'email': request.form.get('email')
         
     })
+    return redirect(url_for('get_contacts'))
+
+@app.route('/delete_contact/<contact_id>')
+def delete_contact(contact_id):
+    mongo.db.contacts.remove({'_id': ObjectId(contact_id)})
     return redirect(url_for('get_contacts'))
 
 if __name__ == '__main__':

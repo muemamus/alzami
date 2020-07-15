@@ -9,22 +9,15 @@
                     <i class="material-icons">expand_more</i><strong>{{contact.phonenumber}}</strong> 
                 </div>
                  <div class="col s3">
-                    <a class="waves-effect waves-light btn btn_small red">Update</a>
-                    <a class="waves-effect waves-light btn btn_small blue">Delete</a>
+                    <a href="{{url_for('edit_contact', contact_id=contact._id)}}" class="waves-effect waves-light btn btn_small red">Update</a>
+                    <a href="{{url_for('delete_contact', contact_id=contact._id)}}" class="waves-effect waves-light btn btn_small blue">Delete</a>
                 </div>
-                
-            </div>
+             </div>
             <div class="collapsible-body">
                 <p>Firstname : {{contact.firstname}}</p>
                 <p>Lastname  : {{contact.lastname}}</p>
                 <p> Email     : {{contact.email}}</p>
                 <p> Date Created     : {{contact.date_created}}</p>
-                   
-                   
-                   
-                   
-
-                
             </div>
         </li>
         {% endfor %}
