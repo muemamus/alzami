@@ -15,6 +15,9 @@ mongo = PyMongo(app)
 def hello():
     return render_template("contacts.html", contacts=mongo.db.contacts.find())
 
+# @app.route('/add_task')
+# def add_task():
+#     return render_template('addcontact.html')
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
