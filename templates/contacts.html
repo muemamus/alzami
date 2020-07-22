@@ -1,4 +1,9 @@
+    <!-- Include navbar,css,icons and javascript from base.html -->
+
     {% extends 'base.html' %}
+
+    <!-- Add collapsible component for showing all contacts-->
+
     {% block content %}
     <ul class="collapsible popout" data-collapsible="accordion">
         {% for contact in contacts %}

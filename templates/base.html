@@ -1,19 +1,31 @@
+<!-- 
+     We are sending HTML as response to clients.However we are using 
+     Jinja(Template Language) to send dynamic data while still using HTML
+-->
+
+<!-- 
+     Jinja also has an idea called template inheritance where we create base
+     HTML file keep common HTML components and static assets used across 
+     webpages.This prevent repetition
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Some CSS,Icons and Javascript to be used across different page -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <!-- <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css"/> -->
-
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css"/>
     <title>Contacts Manager</title>
 </head>
 <body>
+<!-- This navbar is the same across webpages.It links for adding and
+     getting contacts -->
 <div class="navbar-fixed">
 <nav>
-    <div class="nav-wrapper ">
-      <a href="#" class="brand-logo">Alzima</a>
+    <div class="nav-wrapper" >
+      <a href="#" class="brand-logo">Alzami</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right  hide-on-med-and-down">
         <li><a  href="{{url_for('get_contacts')}}"><i class="material-icons">home</i></a></li>
@@ -32,15 +44,19 @@
 <div class="row">
  
 {% block content %}
-
-        {% endblock %}
+{% endblock %}
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    
+    
     <script type="text/javascript">
+        
+        //Make collapsible component collapsible when document is ready
         $(document).ready(function () {
             $('.collapsible').collapsible();
         });
+
         $('.datepicker').pickadate({
             selectMonths: true, // Creates a dropdown to control month
             selectYears: 15, // Creates a dropdown of 15 years to control year,
@@ -54,17 +70,12 @@
             $('select').material_select();
             $(".button-collapse").sideNav();
         });
-        document.getElementById("matfix").addEventListener("click", function(e) {
-	e.stopPropagation();
+        document.getElementById("matfix").addEventListener("click",
+         function(e) {
+	      e.stopPropagation();
 });
-    </script>
+</script>
 </div>
-     
 </div>
-
-
-
-    
-
 </body>
 </html>
